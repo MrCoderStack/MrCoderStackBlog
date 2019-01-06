@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('next.layouts.app')
 @section('title'){{$article->title}}@endsection
 @section('keywords'){{$article->title}}@endsection
 @section('description'){{$article->title}}@endsection

@@ -1,34 +1,39 @@
-@extends('layouts.app')
+@extends('next.layouts.app')
 @section('content')
     @parent
     <div id="content" class="content">
-        <div id="posts" class="posts-expand">
-            <div class="post-block page">
-                <header class="post-header">
-                    <h1 class="post-title" style="margin-left: 46%" itemprop="name headline">分类</h1>
-                </header>
-                <div class="post-body">
-                    <div class="category-all-page">
-                        <div class="category-all-title">
-                            目前共计 {{$total}} 个分类
-                        </div>
-                        <div class="category-all">
-                            <ul class="category-list">
-                                @if($cates)
-                                    @foreach($cates as $k => $cate)
-                                        <li class="category-list-item"><a class="category-list-link"
-                                                                          href="/cates/{{$cate->id}}">{{$cate->name}}</a><span
-                                                    class="category-list-count">{{$cate->num}}</span></li>
-                                    @endforeach
-                                @endif
-                            </ul>
-                        </div>
-                    </div>
+        <div class="post-block category">
+            <div id="posts" class="posts-collapse">
+                <div class="collection-title">
+                    <h1>{{$cateName}}
+                        <small>分类</small>
+                    </h1>
                 </div>
+                @if($articles)
+                    @foreach($articles as $article)
+                        <article class="post post-type-normal" itemscope="" itemtype="">
+                            <header class="post-header">
+                                <h2 class="post-title" style="margin-left: 100px;">
+                                    <a class="post-title-link" href="{{route('articles.show', $article->id)}}"
+                                       itemprop="url">
+                                        <span itemprop="name">{{$article->title}}</span>
+                                    </a>
+                                </h2>
+                                <div class="post-meta">
+                                    <time class="post-time" itemprop="dateCreated"
+                                          datetime="{{$article->created_at_date}}"
+                                          content="{{$article->created_at_date}}">
+                                        {{$article->created_at_date}}
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                    @endforeach
+                @endif
             </div>
         </div>
+        {{ $articles->links() }}
     </div>
-
 @endsection
 @section('sidebar')
     @parent

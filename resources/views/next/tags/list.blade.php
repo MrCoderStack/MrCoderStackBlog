@@ -1,39 +1,54 @@
-@extends('layouts.app')
+@extends('next.layouts.app')
 @section('content')
     @parent
     <div id="content" class="content">
-        <div class="post-block category">
-            <div id="posts" class="posts-collapse">
-                <div class="collection-title">
-                    <h1>{{$cateName}}
-                        <small>分类</small>
-                    </h1>
+
+
+        <div id="posts" class="posts-expand">
+
+
+            <div class="post-block page">
+                <header class="post-header">
+
+                    <h1 class="post-title" itemprop="name headline" style="margin-left: 46%">标签</h1>
+
+
+                </header>
+
+
+                <div class="post-body">
+
+
+                    <div class="tag-cloud">
+                        <div class="tag-cloud-title">
+                            目前共计 {{$total}} 个标签
+                        </div>
+                        <div class="tag-cloud-tags">
+                            @if($tags)
+                                @foreach($tags as $k => $tag)
+                                    @if(($k%2))
+                                        <a href="/tags/{{$tag->id}}/"
+                                           style="font-size: 18px; color: #8e8e8e">{{$tag->name}}</a>
+                                    @else
+                                        <a href="/tags/{{$tag->id}}/"
+                                           style="font-size: 12px; color: #ccc">{{$tag->name}}</a>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+
                 </div>
-                @if($articles)
-                    @foreach($articles as $article)
-                        <article class="post post-type-normal" itemscope="" itemtype="">
-                            <header class="post-header">
-                                <h2 class="post-title" style="margin-left: 100px;">
-                                    <a class="post-title-link" href="{{route('articles.show', $article->id)}}"
-                                       itemprop="url">
-                                        <span itemprop="name">{{$article->title}}</span>
-                                    </a>
-                                </h2>
-                                <div class="post-meta">
-                                    <time class="post-time" itemprop="dateCreated"
-                                          datetime="{{$article->created_at_date}}"
-                                          content="{{$article->created_at_date}}">
-                                        {{$article->created_at_date}}
-                                    </time>
-                                </div>
-                            </header>
-                        </article>
-                    @endforeach
-                @endif
+
+
             </div>
+
+
         </div>
-        {{ $articles->links() }}
+
+
     </div>
+
 @endsection
 @section('sidebar')
     @parent
@@ -51,17 +66,17 @@
                     </div>
                     <nav class="site-state motion-element">
                         <div class="site-state-item site-state-posts">
-                            <a href="/">
+                            <a href="/next/archives/">
                                 <span class="site-state-item-count">{{$articleCount}}</span>
                                 <span class="site-state-item-name">日志</span></a>
                         </div>
                         <div class="site-state-item site-state-categories">
-                            <a href="/cates">
+                            <a href="/categories/index.html">
                                 <span class="site-state-item-count">{{$catesCount}}</span>
                                 <span class="site-state-item-name">分类</span></a>
                         </div>
                         <div class="site-state-item site-state-tags">
-                            <a href="/tags">
+                            <a href="/tags/index.html">
                                 <span class="site-state-item-count">{{$tagsCount}}</span>
                                 <span class="site-state-item-name">标签</span></a>
                         </div>
@@ -91,6 +106,22 @@
 @endsection
 
 @push('importscripts')
+    <link href="/next/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+    <link href="/next/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+    <link href="/next/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/next/css/sweetalert.mini.css">
+
+
+    <script async src="/next/js/src/busuanzi.pure.mini.js"></script>
+    <script type="text/javascript" src="/next/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/next/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <script type="text/javascript" src="/next/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <script type="text/javascript" src="/next/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/next/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/next/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/next/js/src/utils.js?v=5.1.4"></script>
+    <script type="text/javascript" src="/next/js/src/motion.js?v=5.1.4"></script>
+    <script type="text/javascript" src="/next/js/src/bootstrap.js?v=5.1.4"></script>
 @endpush
 
 @section('diyscript')

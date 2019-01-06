@@ -1,64 +1,33 @@
-@extends('layouts.app')
+@extends('next.layouts.app')
 @section('content')
     @parent
     <div id="content" class="content">
-
-
-        <div class="post-block category">
-
-            <div id="posts" class="posts-collapse">
-                <div class="collection-title">
-                    <h1>{{$tagName}}
-                        <small>标签</small>
-                    </h1>
+        <div id="posts" class="posts-expand">
+            <div class="post-block page">
+                <header class="post-header">
+                    <h1 class="post-title" style="margin-left: 46%" itemprop="name headline">分类</h1>
+                </header>
+                <div class="post-body">
+                    <div class="category-all-page">
+                        <div class="category-all-title">
+                            目前共计 {{$total}} 个分类
+                        </div>
+                        <div class="category-all">
+                            <ul class="category-list">
+                                @if($cates)
+                                    @foreach($cates as $k => $cate)
+                                        <li class="category-list-item"><a class="category-list-link"
+                                                                          href="/cates/{{$cate->id}}">{{$cate->name}}</a><span
+                                                    class="category-list-count">{{$cate->num}}</span></li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-
-
-                @if($articles)
-                    @foreach($articles as $article)
-                        <article class="post post-type-normal" itemscope="" itemtype="">
-                            <header class="post-header">
-
-                                <h2 class="post-title" style="margin-left: 100px;">
-
-                                    <a class="post-title-link" href="{{route('articles.show', $article->id)}}"
-                                       itemprop="url">
-
-                                        <span itemprop="name">{{$article->title}}</span>
-
-                                    </a>
-
-                                </h2>
-
-                                <div class="post-meta">
-                                    <time class="post-time" itemprop="dateCreated"
-                                          datetime="{{$article->created_at_date}}"
-                                          content="{{$article->created_at_date}}">
-                                        {{$article->created_at_date}}
-                                    </time>
-                                </div>
-
-                            </header>
-                        </article>
-                    @endforeach
-                @endif
-
-
             </div>
-
         </div>
-
-
-        {{ $articles->links() }}
-
-
     </div>
-
-
-
-
-
-
 
 @endsection
 @section('sidebar')
@@ -117,22 +86,6 @@
 @endsection
 
 @push('importscripts')
-    <link href="/next/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-    <link href="/next/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-    <link href="/next/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="/next/css/sweetalert.mini.css">
-
-
-    <script async src="/next/js/src/busuanzi.pure.mini.js"></script>
-    <script type="text/javascript" src="/next/lib/jquery/index.js?v=2.1.3"></script>
-    <script type="text/javascript" src="/next/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-    <script type="text/javascript" src="/next/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-    <script type="text/javascript" src="/next/lib/velocity/velocity.min.js?v=1.2.1"></script>
-    <script type="text/javascript" src="/next/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-    <script type="text/javascript" src="/next/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-    <script type="text/javascript" src="/next/js/src/utils.js?v=5.1.4"></script>
-    <script type="text/javascript" src="/next/js/src/motion.js?v=5.1.4"></script>
-    <script type="text/javascript" src="/next/js/src/bootstrap.js?v=5.1.4"></script>
 @endpush
 
 @section('diyscript')

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('next.layouts.app')
 
 @section('title', '全部文章')
 

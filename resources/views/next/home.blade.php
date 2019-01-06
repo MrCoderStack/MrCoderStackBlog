@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('next.layouts.app')
 @section('content')
     @parent
     <div id="content" class="content">

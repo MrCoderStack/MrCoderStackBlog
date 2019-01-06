@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('next.layouts.app')
 @push('importscripts')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
