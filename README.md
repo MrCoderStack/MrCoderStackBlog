@@ -199,7 +199,7 @@ service crond restart
     ```
      crontab -e:
      //每天下午六点执行推送
-     0 18 * * * /usr/share/nginx/html/blog/crontab/indexer.sh
+     0 18 * * * /usr/share/nginx/html/blog/crontab/push.sh
      service crond restart
 
     ```
