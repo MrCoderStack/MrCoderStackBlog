@@ -1,0 +1,300 @@
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//----------------------------------------------------------
+//------------------     轮播
+//----------------------------------------------------------
+//z-slide 轮播
+.z-slide{
+    .z-inner{
+        border-radius: 2px;
+        box-shadow: 0 1px 5px #dcdcdc;
+        background-color: white;
+        .z-content{
+            padding:40px;
+            .z-title{
+                color: black;
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
+            .z-intro{
+                color:gray;
+                margin-bottom: 20px;
+            }
+            .z-button{
+                padding: 5px 10px 5px 10px;
+                color: gray;
+                font-size: 12px;
+                border: 1px solid #c2c2bc;
+                border-radius: 15px;
+                text-decoration: none;
+            }
+            .z-button:hover{
+                border: 1px solid gray;
+            }
+        }
+    }
+    .z-slide-button{
+        .z-location{
+            position: absolute;
+            //top: 0;left: 0;bottom: 0;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            .z-button{
+              padding: 20px 10px 20px 10px;
+              font-size: 30px;
+              color: grey;
+              border-radius: 0 2px 2px 0;
+              background-color: #2B2B2B;
+              filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity: 0.5;opacity: 0.5;
+            }
+            .z-button:hover{
+                filter:alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;
+            }
+        }
+        .z-location-left{
+            @extend .z-location;
+            top: 0;left: 0;bottom: 0;
+        }
+        .z-location-right{
+            @extend .z-location;
+            top: 0;right: 0;bottom: 0;
+        }
+    }
+}
+
+//----------------------------------------------------------
+//------------------     文章
+//----------------------------------------------------------
+//文章简介-纵向布局：图片在上，文字在下
+.z-article-vertical{
+    margin-bottom: 20px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 1px 5px #dcdcdc;
+    background-color: white;
+    .z-cover{
+      width:100%
+    }
+    .z-content{
+        padding:30px;
+        .z-title{
+            color: black;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        .z-info{
+            text-align: center;
+            font-size: 12px;
+            color: #a1a1a1;
+        }
+        .z-intro{
+            color:gray;
+            margin-bottom: 20px;
+        }
+        .z-button{
+            padding: 5px 10px 5px 10px;
+            color: gray;
+            font-size: 12px;
+            border: 1px solid #c2c2bc;
+            border-radius: 15px;
+            text-decoration: none;
+        }
+        .z-button:hover{
+            border: 1px solid gray;
+        }
+    }
+}
+//文章简介-横布局：图片在右，文字在左
+.z-article-horizontal{
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+    .z-title{
+      color:black;
+      margin-bottom: 4px;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .z-info{
+      font-size: 13px;
+      color: #969696;
+    }
+    .z-intro{
+      margin: 0;
+      color: #333;
+      font-size: 14px;
+      line-height: 24px;
+      height:48px;
+      overflow: hidden;
+      @media screen and (orientation: landscape) {
+        height: 72px;
+      }
+    }
+    .z-cover{
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      border: 1px solid #f0f0f0;
+    }
+    .z-content{
+
+    }
+}
+//文章详情页
+.z-article-show{
+  margin-bottom: 20px;
+  .z-title{
+    color:rgb(51, 51, 51);
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .z-info{
+    margin-bottom: 30px;
+  }
+  .z-content{
+    img{
+      max-width:100%;
+      max-height: 100vh;
+    }
+    pre{
+      border:0;
+      padding: 16px;
+      overflow: auto;
+      font-size: 85%;
+      background-color: #f6f8fa;
+      border-radius: 3px;
+      code{
+        white-space: pre;
+      }
+    }
+  }
+  .z-counter{
+    margin-top: 20px;
+    a{
+      float: right;
+    }
+  }
+}
+
+//----------------------------------------------------------
+//------------------     评论
+//----------------------------------------------------------
+.z-comments{
+  .z-avatar{
+    float:left;
+    height:30px;
+    width:30px;
+  }
+  .z-avatar-text{
+    height:30px;
+    width:30px;
+    border-radius:15px;
+    background-color:#bfbfbf;
+    float:left;
+    text-align:center;
+    line-height:30px;
+    color:white;
+    font-size:15px
+  }
+  .z-name{
+    line-height:30px;
+    margin-left:40px;
+    font-weight:bold;
+    font-size:17px;
+    .z-label{
+      color:#fcfcfc;
+      font-size:11px;
+      padding:5px 8px;
+      margin-left:5px;
+    }
+  }
+  .z-content{
+    margin-left:40px;
+  }
+  .z-info{
+    margin-left:40px;
+    font-size:13px;
+    color:#c8c8c8;
+  }
+  .z-reply-btn{
+    float:right;
+    font-size:16px;
+    cursor: pointer;
+  }
+  .z-reply-btn:hover{
+    color:black;
+  }
+  .z-reply{
+    margin-left:40px;
+  }
+}
+
+//----------------------------------------------------------
+//------------------     editor
+//----------------------------------------------------------
+//markdown 编辑器
+.z-editor{
+    .z-editor-header{
+        background-color: #f5f5f5;
+        border-color: #d1d1d1;
+        border-style: solid;
+        border-width: 1px 1px 0 1px;
+        padding-left: 10px;
+        .z-editor-icon{
+            padding: 5px 10px 5px 10px;
+        }
+        .z-editor-icon:hover{
+            color: black;
+            cursor: pointer;
+        }
+    }
+    .z-editor-input{
+        width: 100%;
+        resize: none;
+        border-radius: 0;
+        border-style: solid;
+    }
+}
+
+//----------------------------------------------------------
+//------------------     footer
+//----------------------------------------------------------
+.z-footer{
+    background-color: #313131;
+    text-align: center;
+    padding: 60px 0 40px;
+    .z-text{
+      font-family: Miriam Libre,sans-serif;
+      color: white;
+      font-size: 10px;
+    }
+    .z-text-big{
+        color: white;
+        font-size:20px;
+    }
+}
+
+//----------------------------------------------------------
+//------------------     居中（flex）
+//----------------------------------------------------------
+//水平和垂直居中
+.z-center{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+//水平居中
+.z-center-horizontal{
+    display: flex;
+    justify-content: center;
+}
+//垂直居中
+.z-center-vertical{
+    display: flex;
+    align-items: center;
+}
