@@ -153,14 +153,14 @@ killall -9 searchd
 /usr/local/coreseek/bin/indexer -c /etc/sphinx.conf --all --rotate && 
 /usr/local/coreseek/bin/searchd -c /etc/sphinx.conf
 time=`date "+%Y-%m-%d %H:%M:%S "`
-echo "${time} sphinx restart success" >> /usr/share/nginx/html/crontab/sphinx.log
+echo "${time} sphinx restart success" >> /usr/share/nginx/html/blog/crontab/sphinx.log
 
 ```
 然后定时任务中每小时执行一次该脚本：
 
 ```
 crontab -e
-0 */1 * * * /usr/share/nginx/html/crontab/indexer.sh
+0 */1 * * * /usr/share/nginx/html/blog/crontab/indexer.sh
 service crond restart
 
 ```
@@ -168,7 +168,19 @@ service crond restart
 
 
 
-
+## 关于后台的开发
+后台使用react + antdesign开发
+进行二次开发的话需要安装node.js
+这里我们推荐yarn（众所周知的原因）
+```
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+yum install yarn
+yarn -v
+yarn install
+npm run watch  //实时调试
+npm run dev    //开发打包
+npm run prod   //上线打包
+```
 
 
 
