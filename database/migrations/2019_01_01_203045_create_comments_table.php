@@ -20,12 +20,14 @@ class CreateCommentsTable extends Migration
             $table->integer('target_id')->default(0);
             $table->integer('user_id')->default(0);
             $table->text('content');
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
-            $table->string('website')->nullable();
-            $table->string('avatar')->nullable();
-            $table->string('ip')->nullable();
-            $table->string('city')->nullable();
+            $table->string('os', 50)->nullable();
+            $table->string('browser', 50)->nullable();
+            $table->string('name', 50)->nullable();
+            $table->string('email', 50)->nullable();
+            $table->string('website', 100)->nullable();
+            $table->string('avatar', 255)->nullable();
+            $table->string('ip', 50)->nullable();
+            $table->string('city', 50)->nullable();
             $table->timestamps();
         });
     }
