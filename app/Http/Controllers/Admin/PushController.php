@@ -19,9 +19,17 @@ class PushController extends Controller
      */
     public function push()
     {
-        $pushData = $this->getPushData();
-        $result = $this->baiduPush($pushData);
-        dd($result);
+        if(env('PUSH_STATE') == 'on'){
+            $pushData = $this->getPushData();
+            $result = $this->baiduPush($pushData);
+            if($result){
+                return 'push success';
+            }else{
+                return 'push fail';
+            }
+        }else{
+            return '自动推送未打开';
+        }
     }
 
     public function getPushData()

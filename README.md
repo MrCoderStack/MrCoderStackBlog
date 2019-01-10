@@ -1,12 +1,31 @@
 # mrcoderBlog
 
+## 背景
+博主一直使用git page + hexo搭建个人的博客，奈何，渐渐发现了问题
+
+* seo差的几乎没有
+* 访问速度慢的掉渣
+
+于是本着不重复造轮子的前提下，github上看了开源的blog系统，发现很多都不符合个人的风格，审美，可能是博主用惯了hexo的主题，终下决心自己开发一套。
+
+## 技术
+
+完全重新开发是不可能的
+
+* 后台（顺带学习了一下react） 
+    参考 https://github.com/SadCreeper/laravel-react-blog这位兄跌的开源项目，做了很多更改&优化
+* 前端
+    参照hexo的next主题，开发了一套，兼容同学们自己开发多个主题
+
 ##  代码部署
 * git clone https://github.com/FrCoderBlog/mrcoderBlog.git blog
 * cd blog 
 * composer install
 * composer dump-autoload  (加载所有类)
 * php artisan key:generate
-* 配置.env  (新增 BLOG_THEME = next 指定主题)
+* 配置.env  
+    BLOG_THEME = next  //指定主题
+    PUSH_STATE = off   //自动推送
 * php artisan migrate (建表)
 * php artisan db:seed --class=UsersTableSeeder (填充初始密码account:admin@qq.com, pass:admin)
 * php artisan storage:link
@@ -156,17 +175,36 @@ time=`date "+%Y-%m-%d %H:%M:%S "`
 echo "${time} sphinx restart success" >> /usr/share/nginx/html/blog/crontab/sphinx.log
 
 ```
-然后定时任务中每小时执行一次该脚本：
+然后定时任务中每3小时执行一次该脚本：
 
 ```
 crontab -e
-0 */1 * * * /usr/share/nginx/html/blog/crontab/indexer.sh
+0 */3 * * * /usr/share/nginx/html/blog/crontab/indexer.sh
 service crond restart
 
 ```
 配置完毕，搜索功能已经可以使用
 
+## 关于SEO
+* 目前支持百度
+* js被动推送
+    需要别人访问后会自动把链接推给百度
+* 主动推送
+    需要对项目下crontab目录下的push.sh进行编辑(域名需替换为实际的)：
+    ```
+    time=`date "+%Y-%m-%d %H:%M:%S "`
+    echo "${time}" `curl http://www.wrsee.com/admin-api/push` >> push.log
+    ```
+    编辑定时任务:
+    ```
+     crontab -e:
+     //每天下午六点执行推送
+     0 18 * * * /usr/share/nginx/html/blog/crontab/indexer.sh
+     service crond restart
 
+    ```
+
+    
 
 ## 关于后台的开发
 后台使用react + antdesign开发

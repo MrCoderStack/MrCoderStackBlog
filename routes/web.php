@@ -54,6 +54,8 @@ Route::middleware(['auth', 'super'])->namespace('Admin')->prefix('admin-api')->g
     Route::get('/users/{id}', 'UserController@show');
     Route::post('/users/{id}', 'UserController@update');
     Route::post('/users/{id}/password', 'UserController@changePassword');
+});
 
+Route::namespace('Admin')->prefix('admin-api')->group(function () {
     Route::get('/push', 'PushController@push');
 });
