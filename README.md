@@ -6,7 +6,7 @@
 * composer install
 * composer dump-autoload  (加载所有类)
 * php artisan key:generate
-* 配置.env
+* 配置.env  (新增 BLOG_THEME = next 指定主题)
 * php artisan migrate (建表)
 * php artisan db:seed --class=UsersTableSeeder (填充初始密码account:admin@qq.com, pass:admin)
 * php artisan storage:link
