@@ -130,20 +130,40 @@ class ArticleController extends Controller
             $input = $comment ? $comment : $input;
         }
 
-
         preg_match_all('#<h2>(.*)</h2>#', $article->content_html, $outline);
-        $outline = $outline[1];
-        $preg = "#<h([0-9])>(.*?)</h([0-9])>#";
-        $replace = '<h$1 id="$2">$2</h$1>';
-        $content = preg_replace($preg, $replace, $article->content_html);
+        $out = $outline[1];
+        $outline = [];
+        foreach ($out as $k => $v) {
+            $outline[$k]['name'] = $v;
+            $outline[$k]['id'] = $this->formatContent($v);
+        }
 
-//        $parse = new \Parsedown();
-//        echo $parse->text($article->content_markdown);
-//        $article->content_html = $parse->text($article->content_markdown);
-//        exit;
+        $preg = "#<h([0-9])>(.*)</h([0-9])>#";
+        $replace = '<h$1 id="$2">$2</h$1>';
+        $content = preg_replace_callback($preg, function ($matches) {
+            $title = $matches[2];
+            $title = $this->formatContent($title);
+            $h2 = '<h' . $matches[1] . ' id= \'' . $title . '\'>' . $matches[2] . '</h' . $matches[1] . '>';
+            return $h2;
+        }, $article->content_html);
+
         $article->content_html = $content;
         $tags = $article->tags;
         return view(env('BLOG_THEME') . '.articles.show', compact('article', 'comments', 'input', 'count', 'outline', 'tags', 'articleCount', 'catesCount', 'tagsCount'));
+    }
+
+
+    public function formatContent($content)
+    {
+        // Filter 英文标点符号
+        $content = preg_replace("/[[:punct:]]/i", " ", $content);
+        // Filter 中文标点符号
+        mb_regex_encoding('utf-8');
+        $char = "。、！？：；﹑•＂…‘’“”〝〞∕¦‖—　〈〉﹞﹝「」‹›〖〗】【»«』『〕〔》《﹐¸﹕︰﹔！¡？¿﹖﹌﹏﹋＇´ˊˋ―﹫︳︴¯＿￣﹢﹦﹤‐­˜﹟﹩﹠﹪﹡﹨﹍﹉﹎﹊ˇ︵︶︷︸︹︿﹀︺︽︾ˉ﹁﹂﹃﹄︻︼（）";
+        $content = mb_ereg_replace("[" . $char . "]", " ", $content, "UTF-8");
+        // Filter 连续空格
+        $content = preg_replace('# #', '', $content);
+        return $content;
     }
 
 }

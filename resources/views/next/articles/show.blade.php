@@ -329,7 +329,7 @@
                     <div class="site-author motion-element" itemprop="author" itemscope=""
                          itemtype="">
                         <img class="site-author-image" itemprop="image" src="/next/images/avatar.jpg" alt="MrCoder">
-                        <p class="site-author-name" itemprop="name">FrCoder</p>
+                        <p class="site-author-name" itemprop="name">MrCoder</p>
                         <p class="site-description motion-element"
                            itemprop="description">@yield('title', setting('web_name', 'Laravel'))</p>
                     </div>
@@ -383,8 +383,8 @@
                             @if($outline)
                                 @foreach($outline as $k => $item)
                             <li class="nav-item nav-level-1">
-                                <a class="nav-link" href="#{{$item}}">
-                                    <span class="nav-number">{{$k+1}}.</span> <span class="nav-text">{{$item}}</span>
+                                <a class="nav-link" href="#{{$item['id']}}">
+                                    <span class="nav-number">{{$k+1}}.</span> <span class="nav-text">{{$item['name']}}</span>
                                 </a>
                             </li>
                                 @endforeach
