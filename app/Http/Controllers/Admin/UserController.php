@@ -39,13 +39,13 @@ class UserController extends Controller
             $user->password = bcrypt($request->newPassword);
             $user->save();
             return response()->json([
-              'status' => 0,
-              'message' => '修改成功！',
+                'status' => 0,
+                'message' => '修改成功！',
             ]);
-        }else {
+        } else {
             return response()->json([
-              'status' => 1,
-              'message' => '原密码错误！',
+                'status' => 1,
+                'message' => '原密码错误！',
             ]);
         }
     }

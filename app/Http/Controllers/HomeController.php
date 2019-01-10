@@ -23,10 +23,11 @@ class HomeController extends Controller
             $article->content = str_limit(strip_tags($article->content_html), 500);
             $article->created_at_date = $article->created_at;//->toDateString();
             $article->updated_at_diff = $article->updated_at;//->diffForHumans();
-            $article->comments =  $article->comments()->count();
-            $article->words = mb_strlen(strip_tags($article->content_html),'UTF8');
-            $article->read = ceil($article->words/1000);
+            $article->comments = $article->comments()->count();
+            $article->words = mb_strlen(strip_tags($article->content_html), 'UTF8');
+            $article->read = ceil($article->words / 1000);
         }
-        return view('home', compact('articles','articleCount','catesCount','tagsCount'));
+
+        return view(env('BLOG_THEME') . '.home', compact('articles', 'articleCount', 'catesCount', 'tagsCount'));
     }
 }

@@ -49,15 +49,15 @@ class CatesController extends Controller
         $validator = Validator::make($request->all(), $rules, $message);
         if ($validator->fails()) {
             $errors = $validator->errors();
-            return ['code'=>400, 'message'=>$errors->first()];
+            return ['code' => 400, 'message' => $errors->first()];
         }
 
 
-        $cateModel = Cate::create(['name'=>$request->cate_name]);
-        if($cateModel){
+        $cateModel = Cate::create(['name' => $request->cate_name]);
+        if ($cateModel) {
             $code = 200;
             $msg = '添加成功！';
-        }else{
+        } else {
             $code = 400;
             $msg = '添加失败！';
         }

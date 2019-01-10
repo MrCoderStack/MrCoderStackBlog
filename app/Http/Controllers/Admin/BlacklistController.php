@@ -24,7 +24,7 @@ class BlacklistController extends Controller
             return response()->json([
                 'message' => '该IP已存在于黑名单中！'
             ]);
-        }else {
+        } else {
             $black = new Blacklist;
             $black->ip = $ip;
             $black->save();

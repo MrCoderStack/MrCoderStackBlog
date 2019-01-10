@@ -20,7 +20,7 @@ class TagController extends Controller
         $articleCount = Article::all()->count();
         $catesCount = Cate::all()->count();
         $tagsCount = Tag::all()->count();
-        return view('tags.list', compact('tags', 'total','articleCount','catesCount','tagsCount'));
+        return view(env('BLOG_THEME') . '.tags.list', compact('tags', 'total', 'articleCount', 'catesCount', 'tagsCount'));
     }
 
     //标签详情
@@ -36,6 +36,6 @@ class TagController extends Controller
         $articleCount = Article::all()->count();
         $catesCount = Cate::all()->count();
         $tagsCount = Tag::all()->count();
-        return view('tags.show', compact('articles', 'tagName','articleCount','catesCount','tagsCount'));
+        return view(env('BLOG_THEME') . '.tags.show', compact('articles', 'tagName', 'articleCount', 'catesCount', 'tagsCount'));
     }
 }

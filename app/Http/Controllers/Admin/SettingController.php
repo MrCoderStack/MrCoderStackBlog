@@ -25,7 +25,7 @@ class SettingController extends Controller
             if ($setting) {
                 $setting->value = $value;
                 $setting->save();
-            }else {
+            } else {
                 $setting = new Setting();
                 $setting->key = $key;
                 $setting->value = $value;

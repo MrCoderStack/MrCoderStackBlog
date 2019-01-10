@@ -20,12 +20,13 @@ class CateController extends Controller
         $articleCount = Article::all()->count();
         $catesCount = Cate::all()->count();
         $tagsCount = Tag::all()->count();
-        return view('cates.list', compact('cates', 'total','articleCount','catesCount','tagsCount'));
+        return view(env('BLOG_THEME') . '.cates.list', compact('cates', 'total', 'articleCount', 'catesCount', 'tagsCount'));
     }
+
     //分类详情
     public function show($cid)
     {
-        $articles = Article::select(['ar.*','ca.name'])->from('articles as ar')->where('ar.is_hidden', 0)->leftjoin('cates as ca','ar.cate_id','=','ca.id')->where('ar.cate_id',$cid)->orderBy('ar.created_at', 'desc')->paginate(10);
+        $articles = Article::select(['ar.*', 'ca.name'])->from('articles as ar')->where('ar.is_hidden', 0)->leftjoin('cates as ca', 'ar.cate_id', '=', 'ca.id')->where('ar.cate_id', $cid)->orderBy('ar.created_at', 'desc')->paginate(10);
         $cateName = '';
         foreach ($articles as $article) {
             $cateName = $article->name;
@@ -37,6 +38,6 @@ class CateController extends Controller
         $articleCount = Article::all()->count();
         $catesCount = Cate::all()->count();
         $tagsCount = Tag::all()->count();
-        return view('cates.show', compact('articles','cateName','articleCount','catesCount','tagsCount'));
+        return view(env('BLOG_THEME') . '.cates.show', compact('articles', 'cateName', 'articleCount', 'catesCount', 'tagsCount'));
     }
 }

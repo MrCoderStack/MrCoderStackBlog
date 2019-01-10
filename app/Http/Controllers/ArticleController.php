@@ -30,7 +30,7 @@ class ArticleController extends Controller
         }
 
         $tags = Tag::all();
-        return view('articles.list', compact('articles', 'tags'));
+        return view(env('BLOG_THEME') . '.articles.list', compact('articles', 'tags'));
     }
 
     //搜索
@@ -143,7 +143,7 @@ class ArticleController extends Controller
 //        exit;
         $article->content_html = $content;
         $tags = $article->tags;
-        return view('articles.show', compact('article', 'comments', 'input', 'count', 'outline', 'tags', 'articleCount', 'catesCount', 'tagsCount'));
+        return view(env('BLOG_THEME') . '.articles.show', compact('article', 'comments', 'input', 'count', 'outline', 'tags', 'articleCount', 'catesCount', 'tagsCount'));
     }
 
 }
