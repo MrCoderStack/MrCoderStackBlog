@@ -73,28 +73,30 @@ class CommentController extends Controller
             $comment->target_id = 0;
         }
         $comment->save();
+
+        //发送邮件
+        if ($request->parent_id) {
+            $commentTarget = Comment::findOrFail($request->target_id);
+            $url = url("/articles/{$comment->article->id}#comment{$comment->id}");
+            if (setting('reply_email')) {
+                try {
+                    Mail::to($commentTarget->email)
+                        ->send(new CommentRemind($commentTarget->content, $comment, $url));
+                } catch (\Exception $e) {
+                }
+            }
+        } else {
+            $url = url("/articles/{$comment->article->id}#comment{$comment->id}");
+            if (setting('comment_email')) {
+                try {
+                    Mail::to(User::findOrFail(1))
+                        ->send(new CommentRemind($comment->article->title, $comment, $url));
+                } catch (\Exception $e) {
+                }
+            }
+        }
+
         return ['code' => 200, 'msg' => '留言成功!'];
-//        //发送邮件
-//        if ($request->parent_id) {
-//            $commentTarget = Comment::findOrFail($request->target_id);
-//            $url = url("/articles/{$comment->article->id}#comment{$comment->id}");
-//            if (setting('reply_email')) {
-//                try {
-//                    Mail::to($commentTarget->email)
-//                        ->send(new CommentRemind($commentTarget->content, $comment, $url));
-//                } catch (\Exception $e) {
-//                }
-//            }
-//        } else {
-//            $url = url("/articles/{$comment->article->id}#comment{$comment->id}");
-//            if (setting('comment_email')) {
-//                try {
-//                    Mail::to(User::findOrFail(1))
-//                        ->send(new CommentRemind($comment->article->title, $comment, $url));
-//                } catch (\Exception $e) {
-//                }
-//            }
-//        }
 //        return back()->with('message', '留言成功！');
     }
 }

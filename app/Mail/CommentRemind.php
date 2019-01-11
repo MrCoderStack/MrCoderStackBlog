@@ -31,11 +31,11 @@ class CommentRemind extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.comments.remind')
-                    ->with([
-                        'title' => $this->title,
-                        'comment' => $this->comment,
-                        'url' => $this->url,
-                    ]);;
+        return $this->view(env('BLOG_THEME') . '.emails.comments.remind')
+            ->with([
+                'title' => $this->title,
+                'comment' => $this->comment,
+                'url' => $this->url,
+            ]);
     }
 }
