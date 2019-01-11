@@ -204,7 +204,21 @@ service crond restart
 
     ```
 
-    
+## 关于邮件通知
+配置.env：
+```
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.qq.com
+MAIL_PORT=465
+MAIL_USERNAME=你得邮箱@qq.com
+MAIL_PASSWORD=xxxxxxx    //去QQ邮箱设置中开启POP3/SMTP获取秘钥
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=你的邮箱@qq.com
+MAIL_FROM_NAME=MrCoder技术栈
+
+```
+后台开启邮件通知即可
+
 
 ## 关于后台的开发
 后台使用react + antdesign开发
