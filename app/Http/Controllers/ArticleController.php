@@ -74,6 +74,21 @@ class ArticleController extends Controller
     //文章详情
     public function show(Request $request, $id)
     {
+        $articleIdArr = array_column(Article::select(['id'])->where('is_hidden', 0)->orderBy('is_top', 'desc')->orderBy('created_at', 'desc')->get()->toArray(), 'id');
+        $currId = array_search($id, $articleIdArr);
+
+        if (!isset($articleIdArr[$currId - 1])) {
+            $preId = '';
+        } else {
+            $preId = $articleIdArr[$currId - 1];
+        }
+
+        if (!isset($articleIdArr[$currId + 1])) {
+            $bacId = '';
+        } else {
+            $bacId = $articleIdArr[$currId + 1];
+        }
+
         $articleCount = Article::all()->count();
         $catesCount = Cate::all()->count();
         $tagsCount = Tag::all()->count();
@@ -83,8 +98,8 @@ class ArticleController extends Controller
         $article->updated_at_date = $article->updated_at->toDateString();
         $comments = $article->comments()->where('parent_id', 0)->orderBy('created_at', 'desc')->get();
         $field = 'id, title';
-        $preArticle = Article::select(DB::RAW("$field"))->where('is_hidden', 0)->where('id', '<', $id)->orderBy('id', 'desc')->first();  //->orderBy('is_top', 'desc')->orderBy('created_at', 'desc')
-        $bacArticle = Article::select(DB::RAW("$field"))->where('is_hidden', 0)->where('id', '>', $id)->orderBy('id', 'asc')->first(); //->orderBy('is_top', 'desc')->orderBy('created_at', 'desc')
+        $preArticle = Article::select(['id', 'title'])->where('id', $preId)->first();
+        $bacArticle = Article::select(['id', 'title'])->where('id', $bacId)->first();
         $count = $article->comments()->count();
         $article->words = mb_strlen(strip_tags($article->content_html), 'UTF8');
         $article->read = ceil($article->words / 1000);
