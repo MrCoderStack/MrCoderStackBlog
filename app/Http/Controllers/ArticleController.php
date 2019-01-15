@@ -82,6 +82,9 @@ class ArticleController extends Controller
         $article->created_at_date = $article->created_at->toDateString();
         $article->updated_at_date = $article->updated_at->toDateString();
         $comments = $article->comments()->where('parent_id', 0)->orderBy('created_at', 'desc')->get();
+        $field = 'id, title';
+        $preArticle = Article::select(DB::RAW("$field"))->where('is_hidden', 0)->where('id', '<', $id)->orderBy('is_top', 'desc')->orderBy('created_at', 'desc')->orderBy('id', 'desc')->first();
+        $bacArticle = Article::select(DB::RAW("$field"))->where('is_hidden', 0)->where('id', '>', $id)->orderBy('is_top', 'desc')->orderBy('created_at', 'desc')->orderBy('id', 'asc')->first();
         $count = $article->comments()->count();
         $article->words = mb_strlen(strip_tags($article->content_html), 'UTF8');
         $article->read = ceil($article->words / 1000);
@@ -149,7 +152,7 @@ class ArticleController extends Controller
 
         $article->content_html = $content;
         $tags = $article->tags;
-        return view(env('BLOG_THEME') . '.articles.show', compact('article', 'comments', 'input', 'count', 'outline', 'tags', 'articleCount', 'catesCount', 'tagsCount'));
+        return view(env('BLOG_THEME') . '.articles.show', compact('article', 'comments', 'input', 'count', 'outline', 'tags', 'articleCount', 'catesCount', 'tagsCount', 'preArticle', 'bacArticle'));
     }
 
 

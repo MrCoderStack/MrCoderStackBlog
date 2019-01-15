@@ -118,20 +118,23 @@
                                 @endforeach
                             @endif
                         </div>
-                        {{--<div class="post-nav">--}}
-                        {{--<div class="post-nav-next post-nav-item">--}}
-                        {{--<a href="/2018/04/24/protobuf嵌套结构定义的赋值问题/" rel="next"--}}
-                        {{--title="protobuf嵌套结构定义的赋值问题">--}}
-                        {{--<i class="fa fa-chevron-left"></i> protobuf嵌套结构定义的赋值问题--}}
-                        {{--</a>--}}
-                        {{--</div>--}}
-                        {{--<span class="post-nav-divider"></span>--}}
-                        {{--<div class="post-nav-prev post-nav-item">--}}
-                        {{--<a href="/2018/05/22/秒杀系统的一些思考/" rel="prev" title="秒杀系统的一些思考">--}}
-                        {{--秒杀系统的一些思考 <i class="fa fa-chevron-right"></i>--}}
-                        {{--</a>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
+                        <div class="post-nav">
+                        @if($preArticle)
+                            <div class="post-nav-next post-nav-item">
+                                <a href="{{ route('articles.show', $preArticle->id) }}" rel="next" title="{{$preArticle->title}}">
+                                    <i class="fa fa-chevron-left"></i>{{$preArticle->title}}
+                                </a>
+                            </div>
+                        @endif
+                            <span class="post-nav-divider"></span>
+                        @if($bacArticle)
+                            <div class="post-nav-prev post-nav-item">
+                                <a href="{{ route('articles.show', $bacArticle->id) }}" rel="prev" title="{{$bacArticle->title}}">
+                                    {{$bacArticle->title}} <i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        @endif
+                        </div>
                     </footer>
                 </div>
             </article>
