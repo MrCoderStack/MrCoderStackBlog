@@ -51,17 +51,17 @@
                     </div>
                     <nav class="site-state motion-element">
                         <div class="site-state-item site-state-posts">
-                            <a href="/">
+                            <a href="{{route('home')}}">
                                 <span class="site-state-item-count">{{$articleCount}}</span>
                                 <span class="site-state-item-name">日志</span></a>
                         </div>
                         <div class="site-state-item site-state-categories">
-                            <a href="/cates">
+                            <a href="{{route('cates')}}">
                                 <span class="site-state-item-count">{{$catesCount}}</span>
                                 <span class="site-state-item-name">分类</span></a>
                         </div>
                         <div class="site-state-item site-state-tags">
-                            <a href="/tags">
+                            <a href="{{route('tags')}}">
                                 <span class="site-state-item-count">{{$tagsCount}}</span>
                                 <span class="site-state-item-name">标签</span></a>
                         </div>

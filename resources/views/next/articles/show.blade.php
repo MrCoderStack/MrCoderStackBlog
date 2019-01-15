@@ -39,7 +39,7 @@
               </span>
                 <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope="" itemtype="">
-                  <a href="/cates/{{$article->cate_id}}" itemprop="url" rel="index">
+                  <a href="{{route('cates')}}/{{$article->cate_id}}" itemprop="url" rel="index">
                     <span itemprop="name">{{$article->cates}}</span>
                   </a>
                 </span>
@@ -86,7 +86,7 @@
                         <div class="my_post_copyright">
                             <p><span>本文标题:</span><a href="{{ route('articles.show', $article->id) }}">客户端服务端消息推送模块设计</a>
                             </p>
-                            <p><span>文章作者:</span><a href="/" title="访问 Mrcoder 的个人博客">Mrcoder</a></p>
+                            <p><span>文章作者:</span><a href="{{route('home')}}" title="访问 Mrcoder 的个人博客">Mrcoder</a></p>
                             <p><span>发布时间:</span>{{$article->created_at_date}}</p>
                             <p><span>最后更新:</span>{{$article->updated_at_date}}</p>
                             <p><span>原始链接:</span>
@@ -114,7 +114,7 @@
                         <div class="post-tags">
                             @if($tags)
                                 @foreach($tags as $tag)
-                            <a href="/tags/{{$tag->id}}/" rel="tag"><i class="fa fa-tag"></i> {{$tag->name}}</a>
+                            <a href="{{route('tags')}}/{{$tag->id}}/" rel="tag"><i class="fa fa-tag"></i> {{$tag->name}}</a>
                                 @endforeach
                             @endif
                         </div>
@@ -335,19 +335,19 @@
                     </div>
                     <nav class="site-state motion-element">
                         <div class="site-state-item site-state-posts">
-                            <a href="/">
+                            <a href="{{route('home')}}">
                                 <span class="site-state-item-count">{{$articleCount}}</span>
                                 <span class="site-state-item-name">日志</span>
                             </a>
                         </div>
                         <div class="site-state-item site-state-categories">
-                            <a href="/cates">
+                            <a href="{{route('cates')}}">
                                 <span class="site-state-item-count">{{$catesCount}}</span>
                                 <span class="site-state-item-name">分类</span>
                             </a>
                         </div>
                         <div class="site-state-item site-state-tags">
-                            <a href="/tags">
+                            <a href="{{route('tags')}}">
                                 <span class="site-state-item-count">{{$tagsCount}}</span>
                                 <span class="site-state-item-name">标签</span>
                             </a>
@@ -365,7 +365,7 @@
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                         <span class="links-of-author-item">
-                    <a href="http://www.wrsee.com" target="_blank" title="Wrsee">
+                    <a href="{{route('home')}}" target="_blank" title="Wrsee">
                         <i class="fa fa-fw fa-code"></i>Wrsee</a>
                   </span>
                         <span class="links-of-author-item">

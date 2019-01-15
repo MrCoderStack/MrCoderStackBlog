@@ -27,10 +27,10 @@
                             @if($tags)
                                 @foreach($tags as $k => $tag)
                                     @if(($k%2))
-                                        <a href="/tags/{{$tag->id}}/"
+                                        <a href="{{route('tags')}}/{{$tag->id}}/"
                                            style="font-size: 18px; color: #8e8e8e">{{$tag->name}}</a>
                                     @else
-                                        <a href="/tags/{{$tag->id}}/"
+                                        <a href="{{route('tags')}}/{{$tag->id}}/"
                                            style="font-size: 12px; color: #ccc">{{$tag->name}}</a>
                                     @endif
                                 @endforeach
@@ -66,17 +66,17 @@
                     </div>
                     <nav class="site-state motion-element">
                         <div class="site-state-item site-state-posts">
-                            <a href="/next/archives/">
+                            <a href="{{route('home')}}">
                                 <span class="site-state-item-count">{{$articleCount}}</span>
                                 <span class="site-state-item-name">日志</span></a>
                         </div>
                         <div class="site-state-item site-state-categories">
-                            <a href="/categories/index.html">
+                            <a href="{{route('cates')}}">
                                 <span class="site-state-item-count">{{$catesCount}}</span>
                                 <span class="site-state-item-name">分类</span></a>
                         </div>
                         <div class="site-state-item site-state-tags">
-                            <a href="/tags/index.html">
+                            <a href="{{route('tags')}}">
                                 <span class="site-state-item-count">{{$tagsCount}}</span>
                                 <span class="site-state-item-name">标签</span></a>
                         </div>

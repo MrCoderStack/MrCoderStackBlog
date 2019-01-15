@@ -29,7 +29,13 @@
 * php artisan migrate (建表)
 * php artisan db:seed --class=UsersTableSeeder (填充初始密码account:admin@qq.com, pass:admin)
 * php artisan storage:link
+* 配置主题支持
+```
+cd blog
+vim /blog/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php
+搜索auth.login为 env('BLOG_THEME').'.auth.login';
 
+```
 至此，blog已经可以访问了，后台地址为http://你的域名/mrcoderadmin/,不过搜索功能还不能使用
 
 

@@ -14,15 +14,15 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@home')->name('home');
-Route::get('/cates', 'CateController@list');
+Route::get('/cates', 'CateController@list')->name('cates');
 Route::get('/cates/{cateid}', 'CateController@show');
-Route::get('/page/{page}', 'HomeController@home')->name('home');
+Route::get('/page/{page}', 'HomeController@home');
 Route::get('/mrcoderadmin', 'AdminController@index')->name('admin');
 Route::post('/search', 'ArticleController@search')->name('search');
 Route::get('/articles/list', 'ArticleController@list')->name('articles.list');
 Route::resource('/articles', 'ArticleController');
 Route::resource('/comments', 'CommentController');
-Route::get('/tags', 'TagController@list');
+Route::get('/tags', 'TagController@list')->name('tags');
 Route::get('/tags/{tagid}', 'TagController@show');
 //Route::resource('/tags', 'TagController');
 

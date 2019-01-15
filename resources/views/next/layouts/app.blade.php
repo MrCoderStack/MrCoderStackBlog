@@ -11,12 +11,12 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <link rel="apple-touch-icon" sizes="180x180" href="/next/images/apple-touch-icon-next.png?v=5.1.4">
     <link rel="icon" type="image/png" sizes="32x32" href="/next/images/favicon-32x32-next.png?v=5.1.4">
-    <link rel="canonical" href="http://www.wrsee.com/">
+    <link rel="canonical" href="{{route('home')}}">
     <meta name="keywords" content="@yield('keywords', setting('web_name', 'Mrcoder'))">
     <meta name="description" content="@yield('description', setting('web_name', 'Mrcoder'))">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="@yield('title', setting('web_name', 'Mrcoder'))">
-    <meta property="og:url" content="http://www.wrsee.com/index.php">
+    <meta property="og:url" content="{{route('home')}}">
     <meta property="og:site_name" content="@yield('title', setting('web_name', 'Mrcoder'))">
     <meta property="og:description" content="@yield('description', setting('web_name', 'Mrcoder'))">
     <meta property="og:locale" content="zh-Hans">
@@ -33,7 +33,7 @@
             <div class="site-brand-wrapper">
                 <div class="site-meta ">
                     <div class="custom-logo-site-title">
-                        <a href="/" class="brand" rel="start">
+                        <a href="{{route('home')}}" class="brand" rel="start">
                   <span class="logo-line-before">
                     <i>
                     </i>
@@ -57,15 +57,15 @@
             <nav class="site-nav">
                 <ul id="menu" class="menu">
                     <li class="menu-item menu-item-home">
-                        <a href="/" rel="section">
+                        <a href="{{route('home')}}" rel="section">
                             <i class="menu-item-icon fa fa-fw fa-home"></i>
                             <br>首页</a></li>
                     <li class="menu-item menu-item-tags">
-                        <a href="/tags/" rel="section">
+                        <a href="{{route('tags')}}" rel="section">
                             <i class="menu-item-icon fa fa-fw fa-tags"></i>
                             <br>标签</a></li>
                     <li class="menu-item menu-item-cates">
-                        <a href="/cates/" rel="section">
+                        <a href="{{route('cates')}}" rel="section">
                             <i class="menu-item-icon fa fa-fw fa-th"></i>
                             <br>分类</a></li>
                     {{--<li class="menu-item menu-item-archives">--}}
@@ -119,13 +119,9 @@
                 <span class="with-love">
               <i class="fa fa-user"></i>
             </span>
-                <span class="author" itemprop="copyrightHolder">true</span>
+                <span class="post-meta-item-text">编码先生</span>
                 <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-              <i class="fa fa-area-chart"></i>
-            </span>
-                {{--<span class="post-meta-item-text">博客全站字数&#58;</span>--}}
-                {{--<span title="博客全站字数">82.6k</span>--}}
+                <span title="ICP主体备案号">粤ICP备19005341号-1</span>
             </div>
             <div class="busuanzi-count">
                 <span class="site-uv">
