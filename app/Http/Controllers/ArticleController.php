@@ -83,8 +83,8 @@ class ArticleController extends Controller
         $article->updated_at_date = $article->updated_at->toDateString();
         $comments = $article->comments()->where('parent_id', 0)->orderBy('created_at', 'desc')->get();
         $field = 'id, title';
-        $preArticle = Article::select(DB::RAW("$field"))->where('is_hidden', 0)->where('id', '<', $id)->orderBy('is_top', 'desc')->orderBy('created_at', 'desc')->orderBy('id', 'desc')->first();
-        $bacArticle = Article::select(DB::RAW("$field"))->where('is_hidden', 0)->where('id', '>', $id)->orderBy('is_top', 'desc')->orderBy('created_at', 'desc')->orderBy('id', 'asc')->first();
+        $preArticle = Article::select(DB::RAW("$field"))->where('is_hidden', 0)->where('id', '<', $id)->orderBy('id', 'desc')->first();  //->orderBy('is_top', 'desc')->orderBy('created_at', 'desc')
+        $bacArticle = Article::select(DB::RAW("$field"))->where('is_hidden', 0)->where('id', '>', $id)->orderBy('id', 'asc')->first(); //->orderBy('is_top', 'desc')->orderBy('created_at', 'desc')
         $count = $article->comments()->count();
         $article->words = mb_strlen(strip_tags($article->content_html), 'UTF8');
         $article->read = ceil($article->words / 1000);
