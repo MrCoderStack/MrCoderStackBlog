@@ -18,6 +18,11 @@ use Auth;
 
 class ArticleController extends Controller
 {
+    public function index(Request $request)
+    {
+        return redirect('/');
+    }
+
     //文章列表
     public function list()
     {
