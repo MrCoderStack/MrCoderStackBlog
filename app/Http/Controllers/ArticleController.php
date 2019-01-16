@@ -103,7 +103,7 @@ class ArticleController extends Controller
         $count = $article->comments()->count();
         $article->words = mb_strlen(strip_tags($article->content_html), 'UTF8');
         $article->read = ceil($article->words / 1000);
-
+        $article->description = mb_substr($this->formatContent($this->cutstr_html($article->content_html)), 0, 80, 'utf-8');
         if ($article->cate_id) {
             $article->cates = Cate::where('id', $article->cate_id)->first()->name;
         }
@@ -167,6 +167,7 @@ class ArticleController extends Controller
 
         $article->content_html = $content;
         $tags = $article->tags;
+        $article->keywords = implode(',', array_column($tags->toArray(), 'name'));
         return view(env('BLOG_THEME') . '.articles.show', compact('article', 'comments', 'input', 'count', 'outline', 'tags', 'articleCount', 'catesCount', 'tagsCount', 'preArticle', 'bacArticle'));
     }
 

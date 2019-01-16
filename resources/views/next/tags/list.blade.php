@@ -1,4 +1,7 @@
 @extends('next.layouts.app')
+@section('title'){{setting('web_name', 'MrCoder技术栈').'|'.'标签'}}@endsection
+@section('keywords'){{setting('web_name', 'MrCoder技术栈').',标签列表'}}@endsection
+@section('description'){{setting('web_name', 'MrCoder技术栈').',标签描述'}}@endsection
 @section('content')
     @parent
     <div id="content" class="content">
@@ -62,7 +65,7 @@
                              alt="MrCoder">
                         <p class="site-author-name" itemprop="name">MrCoder</p>
                         <p class="site-description motion-element"
-                           itemprop="description">@yield('title', setting('web_name', 'Laravel'))</p>
+                           itemprop="description">{{setting('web_name', 'MrCoder技术栈')}}</p>
                     </div>
                     <nav class="site-state motion-element">
                         <div class="site-state-item site-state-posts">

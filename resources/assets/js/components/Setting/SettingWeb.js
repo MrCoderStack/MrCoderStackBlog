@@ -3,6 +3,7 @@ import { Form, Input, Button, message, Spin, Icon, Radio, Popover, Badge, Alert,
 const FormItem = Form.Item;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
+const { TextArea } = Input;
 
 export class SettingWeb extends React.Component {
   render(){
@@ -26,6 +27,8 @@ class SettingWebForm extends React.Component {
     loading: true,
     formData:{
       web_name:'',
+      web_keywords:'',
+      web_description:'',
       file_disk:'',
       comment_email:0,
       reply_email:0,
@@ -73,6 +76,32 @@ class SettingWebForm extends React.Component {
               <Input placeholder="请输入网站名称" />
             )}
           </FormItem>
+
+          <FormItem {...formItemLayout} label="网站关键词" extra={<Alert message="网站关键词不要轻易更换，影响SEO排名" type="warning" showIcon />}>
+              {getFieldDecorator('web_keywords', {
+                  rules: [{
+                      required: true,
+                      message: '网站关键词不能为空！',
+                  }],
+                  initialValue: formData.web_keywords
+              })(
+              <TextArea  placeholder="请输入网站关键词" />
+              )}
+          </FormItem>
+
+
+          <FormItem {...formItemLayout} label="网站描述" extra={<Alert message="网站描述不要轻易更换，影响SEO排名" type="warning" showIcon />}>
+            {getFieldDecorator('web_description', {
+                rules: [{
+                    required: true,
+                    message: '网站描述不能为空！',
+                }],
+                initialValue: formData.web_description
+            })(
+            <TextArea  placeholder="请输入网站描述" />
+            )}
+          </FormItem>
+
           <FormItem {...formItemLayout} label="图片存储位置" extra={<Alert message="切换图片存储位置后，未同步的图片会无法显示" type="warning" showIcon />}>
             {getFieldDecorator('file_disk', {
               rules: [{

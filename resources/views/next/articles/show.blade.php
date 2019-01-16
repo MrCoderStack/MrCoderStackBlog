@@ -1,7 +1,7 @@
 @extends('next.layouts.app')
-@section('title'){{$article->title}}@endsection
-@section('keywords'){{$article->title}}@endsection
-@section('description'){{$article->title}}@endsection
+@section('title'){{setting('web_name', 'MrCoder技术栈').'|'.$article->title}}@endsection
+@section('keywords'){{setting('web_name', 'MrCoder技术栈').','.$article->keywords}}@endsection
+@section('description'){{setting('web_name', 'MrCoder技术栈').','.$article->description}}@endsection
 
 @section('content')
     @parent
@@ -11,14 +11,14 @@
                 <div class="post-block">
                     <link itemprop="mainEntityOfPage"
                           href="{{ route('articles.show', $article->id) }}">
-                    <span hidden itemprop="author" itemscope="" itemtype="">
-      <meta itemprop="name" content="@yield('title', setting('web_name', 'Laravel'))">
-      <meta itemprop="description" content="">
+                    <span hidden itemprop="author" itemscope="{{setting('web_name', 'MrCoder技术栈')}}" itemtype="{{setting('web_name', 'MrCoder技术栈')}}">
+      <meta itemprop="name" content="{{$article->title}}">
+      <meta itemprop="description" content="{{$article->description}}">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
-                    <span hidden itemprop="publisher" itemscope=""
-                          itemtype="">
-      <meta itemprop="name" content="@yield('title', setting('web_name', 'Laravel'))">
+                    <span hidden itemprop="publisher" itemscope="{{setting('web_name', 'MrCoder技术栈')}}"
+                          itemtype="{{setting('web_name', 'MrCoder技术栈')}}">
+      <meta itemprop="name" content="{{$article->title}}">
     </span>
                     <header class="post-header">
                         <h1 class="post-title" itemprop="name headline">{{$article->title}}</h1>
@@ -331,10 +331,10 @@
                 <div class="site-overview">
                     <div class="site-author motion-element" itemprop="author" itemscope=""
                          itemtype="">
-                        <img class="site-author-image" itemprop="image" src="/next/images/avatar.jpg" alt="MrCoder">
+                        <img class="site-author-image" itemprop="image" src="/next/images/avatar.jpg" alt="MrCoder技术栈头像">
                         <p class="site-author-name" itemprop="name">MrCoder</p>
                         <p class="site-description motion-element"
-                           itemprop="description">@yield('title', setting('web_name', 'Laravel'))</p>
+                           itemprop="description">{{setting('web_description', 'MrCoder技术栈')}}</p>
                     </div>
                     <nav class="site-state motion-element">
                         <div class="site-state-item site-state-posts">

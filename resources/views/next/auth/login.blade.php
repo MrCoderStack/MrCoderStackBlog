@@ -10,6 +10,9 @@
         }
     </style>
 @endpush
+@section('title'){{setting('web_name', 'MrCoder技术栈').'|'.'login'}}@endsection
+@section('keywords'){{setting('web_name', 'MrCoder技术栈').',login'}}@endsection
+@section('description'){{setting('web_name', 'MrCoder技术栈').',login'}}@endsection
 @section('content')
     <div class="container">
         <div class="row">

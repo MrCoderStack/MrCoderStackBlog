@@ -1,4 +1,7 @@
 @extends('next.layouts.app')
+@section('title'){{setting('web_name', 'MrCoder技术栈').'|首页'}}@endsection
+@section('keywords'){{setting('web_keywords', 'MrCoder技术栈')}}@endsection
+@section('description'){{setting('web_description', 'MrCoder技术栈')}}@endsection
 @section('content')
     @parent
     <div id="content" class="content">
@@ -9,12 +12,12 @@
                         <link itemprop="mainEntityOfPage"
                               href="{{ route('articles.show', $article->id) }}">
                         <span hidden itemprop="author" itemscope="" itemtype="">
-                      <meta itemprop="name" content="{{setting('web_name', 'Mrcoder')}}">
-                      <meta itemprop="description" content="@yield('title', setting('web_name', 'Mrcoder'))">
+                      <meta itemprop="name" content="{{setting('web_name', 'MrCoder技术栈')}}">
+                      <meta itemprop="description" content="{{setting('web_description', 'MrCoder技术栈')}}">
                       <meta itemprop="image" content="next/images/avatar.jpg"></span>
                         <span hidden itemprop="publisher" itemscope=""
                               itemtype="">
-                      <meta itemprop="name" content="@yield('title', setting('web_name', 'Mrcoder'))"></span>
+                      <meta itemprop="name" content="{{setting('web_name', 'MrCoder技术栈')}}"></span>
                         <header class="post-header">
                             <h1 class="post-title" itemprop="name headline">
                                 <a class="post-title-link" href="{{ route('articles.show', $article->id) }}"
@@ -97,7 +100,7 @@
                              alt="MrCoder">
                         <p class="site-author-name" itemprop="name">MrCoder</p>
                         <p class="site-description motion-element"
-                           itemprop="description">@yield('title', setting('web_name', 'Laravel'))</p>
+                           itemprop="description">{{setting('web_description', 'MrCoder技术栈')}}</p>
                     </div>
                     <nav class="site-state motion-element">
                         <div class="site-state-item site-state-posts">

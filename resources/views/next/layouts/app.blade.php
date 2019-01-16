@@ -12,18 +12,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/next/images/apple-touch-icon-next.png?v=5.1.4">
     <link rel="icon" type="image/png" sizes="32x32" href="/next/images/favicon-32x32-next.png?v=5.1.4">
     <link rel="canonical" href="{{route('home')}}">
-    <meta name="keywords" content="@yield('keywords', setting('web_name', 'Mrcoder'))">
-    <meta name="description" content="@yield('description', setting('web_name', 'Mrcoder'))">
+    <meta name="keywords" content="@yield('keywords', setting('web_keywords', 'MrCoder技术栈'))">
+    <meta name="description" content="@yield('description', setting('web_description', 'MrCoder技术栈'))">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="@yield('title', setting('web_name', 'Mrcoder'))">
+    <meta property="og:title" content="@yield('title', setting('web_name', 'MrCoder技术栈'))">
     <meta property="og:url" content="{{route('home')}}">
-    <meta property="og:site_name" content="@yield('title', setting('web_name', 'Mrcoder'))">
-    <meta property="og:description" content="@yield('description', setting('web_name', 'Mrcoder'))">
+    <meta property="og:site_name" content="{{setting('web_name', 'MrCoder技术栈')}}">
+    <meta property="og:description" content="@yield('description', setting('web_description', 'MrCoder技术栈'))">
     <meta property="og:locale" content="zh-Hans">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="@yield('title', setting('web_name', 'Mrcoder'))">
-    <meta name="twitter:description" content="@yield('title', setting('web_name', 'Mrcoder'))">
-    <title>@yield('title', setting('web_name', 'Mrcoder'))</title></head>
+    <meta name="twitter:title" content="@yield('title', setting('web_name', 'MrCoder技术栈'))">
+    <meta name="twitter:description" content="@yield('description', setting('web_description', 'MrCoder技术栈'))">
+    <title>@yield('title', setting('web_name', 'MrCoder技术栈'))</title></head>
 <body itemscope="" itemtype="" lang="zh-Hans">
 <div class="container sidebar-position-left
     page-home">
@@ -38,14 +38,14 @@
                     <i>
                     </i>
                   </span>
-                            <span class="site-title">{{setting('web_name', 'Mrcoder')}}</span>
+                            <span class="site-title">{{setting('web_name', 'MrCoder技术栈')}}</span>
                             <span class="logo-line-after">
                     <i>
                     </i>
                   </span>
                         </a>
                     </div>
-                    <p class="site-subtitle">{{setting('web_name', 'Mrcoder')}}</p></div>
+                    <p class="site-subtitle">{{setting('web_name', 'MrCoder技术栈')}}</p></div>
                 <div class="site-nav-toggle">
                     <button>
                         <span class="btn-bar"></span>
