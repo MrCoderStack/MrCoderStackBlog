@@ -11,6 +11,7 @@ use App\Comment;
 use App\Visit;
 use App\Tag;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PushController extends Controller
 {
@@ -37,22 +38,27 @@ class PushController extends Controller
         $articleData = [];
         $cateData = [];
         $tagData = [];
+        $siteMap = [];
 
         $articles = Article::select('id')->get();
         foreach ($articles as $article) {
             $articleData[] = env('APP_URL') . '/articles/' . $article->id;
+            $siteMap[] = env('APP_URL') . '/articles/' .$article->id."\r\n";
         }
 
         $cates = Cate::select('id')->get();
         foreach ($cates as $cate) {
             $cateData[] = env('APP_URL') . '/cates/' . $cate->id;
+            $siteMap[] = env('APP_URL') . '/cates/' .$cate->id."\r\n";
         }
 
         $tags = Tag::select('id')->get();
         foreach ($tags as $tag) {
             $tagData[] = env('APP_URL') . '/tags/' . $tag->id;
+            $siteMap[] = env('APP_URL') . '/tags/' .$tag->id."\r\n";
         }
         $pushData = array_merge($articleData, $cateData, $tagData);
+        Storage::disk('public')->put('sitemap.txt', $siteMap);
         return $pushData;
     }
 
