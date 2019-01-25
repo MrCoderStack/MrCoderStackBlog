@@ -1,5 +1,12 @@
 # mrcoderBlog
 
+## 20190124开源声明
+总花费大约一周时间，陆陆续续开发，laravel+react+next主题的博客系统日渐丰满，是时候分享成果了。喜欢的请star一下。系统会持续更新。
+
+DEMO:
+
+http://www.wrsee.com
+
 ## 背景
 博主一直使用git page + hexo搭建个人的博客，奈何，渐渐发现了问题
 
@@ -209,6 +216,12 @@ service crond restart
      service crond restart
 
     ```
+* 20190124新增360搜索
+百度索引起来了，关键字跑到了首页，是时候支持更多的搜索引擎了，sitemap作为一种通用的方式很受青睐，基于此，新增sitemp生成功能
+每天下午六点定时生成sitemap.txt，访问方式路径为  域名/storage/sitemap.txt，物理路径为  项目目录下的public/storage/sitemp.txt
+
+* 一点建议 
+seo关键字很重要，请务必在后台配置好。
 
 ## 关于邮件通知
 配置.env：
