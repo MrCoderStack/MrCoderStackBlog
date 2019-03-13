@@ -1,5 +1,10 @@
 # mrcoderBlog
 
+![php 7.2+](https://img.shields.io/badge/php-7.2+-brightgreen.svg)
+![Mysql 5.6+](https://img.shields.io/badge/Mysql-5.6+-blue.svg)
+![license](https://img.shields.io/badge/license-MPL--2.0-blue.svg)
+
+
 ## 20190124开源声明
 总花费大约一周时间，陆陆续续开发，laravel+react+next主题的博客系统日渐丰满，是时候分享成果了。喜欢的请star一下。系统会持续更新。
 
